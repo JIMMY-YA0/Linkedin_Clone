@@ -7,9 +7,10 @@ import Feed from "./components/Feed/Feed";
 import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Login from "./components/Login/Login";
+import Widgets from "./components/Widgets/Widgets";
 
 function App() {
-  const { signin } = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   useEffect(() => {
     auth.onAuthStateChanged((userAuth) => {
@@ -32,12 +33,13 @@ function App() {
   return (
     <div className="app">
       <Header />
-      {!signin ? (
+      {!user ? (
         <Login />
       ) : (
         <div className="appBody">
           <Sidebar />
           <Feed />
+          <Widgets />
         </div>
       )}
     </div>

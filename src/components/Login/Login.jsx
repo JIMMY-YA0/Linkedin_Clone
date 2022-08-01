@@ -80,13 +80,13 @@ const Login = () => {
         <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
+          placeholder="Email (Default account:admin@gmail.com)"
           type="email"
         />
         <input
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
+          placeholder="Password (Default password:123456)"
           type="password"
         />
         <button type="submit" onClick={loginToApp}>

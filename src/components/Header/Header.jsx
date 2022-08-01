@@ -8,7 +8,7 @@ import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import ChatIcon from "@mui/icons-material/Chat";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { auth } from "../../firebase";
-import { useDispatch } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux/es/exports";
 import { logout } from "../../app/userSlice";
 
 function Header() {
@@ -35,7 +35,7 @@ function Header() {
         <HeaderOption Icon={BusinessCenterIcon} title="Jobs" />
         <HeaderOption Icon={ChatIcon} title="Messaging" />
         <HeaderOption Icon={NotificationsIcon} title="Notifications" />
-        <HeaderOption onClick={logoutOfApp} avatar={"true"} title="Me" />
+        <HeaderOption onClick={logoutOfApp} avatar={true} title="Me" />
       </div>
     </div>
   );
