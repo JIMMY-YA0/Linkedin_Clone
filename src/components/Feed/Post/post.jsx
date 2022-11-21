@@ -7,14 +7,14 @@ import ShareIcon from "@mui/icons-material/Share";
 import SendIcon from "@mui/icons-material/Send";
 import "./post.css";
 
-const post = forwardRef(({ name, description, message, photoUrl }, ref) => {
+const post = forwardRef(({ name, email, message, photoUrl }, ref) => {
   return (
     <div ref={ref} className="post">
       <div className="postHeader">
         <Avatar src={photoUrl}> {name[0]}</Avatar>
         <div className="postInfo">
           <h2>{name}</h2>
-          <p>{description}</p>
+          <p>{email}</p>
         </div>
       </div>
       <div className="postBody">

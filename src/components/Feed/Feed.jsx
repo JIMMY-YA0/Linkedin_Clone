@@ -11,9 +11,10 @@ import { db } from "./../../firebase";
 import { useSelector } from "react-redux";
 import firebase from "firebase/compat/app";
 import FlipMove from "react-flip-move";
-// import { dblClick } from "@testing-library/user-event/dist/types/setup/directApi";
+
 function Feed() {
   const { user } = useSelector((state) => state.user);
+  console.log("user", user);
   const [input, setInput] = useState("");
   const [posts, setPosts] = useState([]);
 
@@ -34,7 +35,7 @@ function Feed() {
     e.preventDefault();
     db.collection("posts").add({
       name: user.displayName,
-      description: user.email,
+      email: user.email,
       message: input,
       photoUrl: user.photoUrl || "",
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -64,15 +65,11 @@ function Feed() {
       </div>
       {/* Posts */}
       <FlipMove>
-        {posts.map(({ id, data: { name, description, message, photoUrl } }) => (
-          <Post
-            key={id}
-            name={name}
-            description={description}
-            message={message}
-            photoUrl={photoUrl}
-          />
-        ))}
+        {posts.map(({ id, data: { name, email, message, photoUrl } }) =>
+          user.email === email ? (
+            <Post key={id} name={name} email={email} message={message} photoUrl={photoUrl} />
+          ) : null
+        )}
       </FlipMove>
     </div>
   );
